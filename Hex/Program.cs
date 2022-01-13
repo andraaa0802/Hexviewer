@@ -16,10 +16,10 @@ namespace Hexviewer
         public static void Main(string[] args)
         {
             const int SIZE_BUFFER = 16;
+            int nr_of_lines;
 
-
-            Console.Write("introduceti locatia fiserului: ");
-            string fileName = Console.ReadLine();
+            
+            string fileName = @"C:\Users\CRISTI\source\repos\Hewviewer\Hex\fisier.txt";
 
             using (FileStream file = File.OpenRead(fileName))
             {
@@ -35,17 +35,27 @@ namespace Hexviewer
                     Console.Write("  ");
 
                     amount = file.Read(data, 0, SIZE_BUFFER);
-
+                    nr_of_lines = 0;
                     for (int i = 0; i < amount; i++)
                     {
                         Console.Write(ToHex(data[i], 2) + " ");
 
                         if (data[i] < 32)
                         {
+                            if (nr_of_lines == 0)
+                            {
+                                line += "|";
+                                nr_of_lines++;
+                            }
                             line += ".";
                         }
                         else
                         {
+                            if (nr_of_lines == 0)
+                            {
+                                line += "|";
+                                nr_of_lines++;
+                            }
                             line += (char)data[i];
                         }
                     }
