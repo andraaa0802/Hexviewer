@@ -31,7 +31,7 @@ namespace Hexviewer
 
                 do
                 {
-                    Console.Write(ToHex(file.Position, 8));
+                    Console.Write(ToHex(file.Position, 8)+":");
                     Console.Write("  ");
 
                     amount = file.Read(data, 0, SIZE_BUFFER);

@@ -50,6 +50,3 @@ namespace hexviewer
             while (hex.Length < v)
                 hex = "0" + hex;
             return hex;
-        }
-    }
-}
